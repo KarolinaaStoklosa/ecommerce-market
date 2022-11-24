@@ -14,7 +14,7 @@ const Navbar = () => {
                             MARKET
                         </Typography>
                     </Link>
-                    <Box sx={{display:'block', mr:'400px'}}>
+                    <Box sx={{flexGrow:1}}>
                         <Link to='/electronics' style={{textDecoration:"none", color:"white"}}>
                             <Button variant='contained' 
                             sx={{backgroundColor:'#FC766AFF', mx:".5rem"}}

@@ -1,6 +1,6 @@
+import react from 'react' ;
 import { Card, Paper, TextField, Typography, Button } from '@mui/material';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import react from 'react' 
 import { useForm } from 'react-hook-form';
 import { auth } from '../../helpers/firebaseConfig';
 import { RegisterFormData } from '../../helpers/interfaces';
