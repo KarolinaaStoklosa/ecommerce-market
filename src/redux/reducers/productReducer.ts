@@ -1,11 +1,12 @@
 import { AnyAction } from "redux";
+import { Product } from "../../helpers/interfaces";
 import { ActionTypes } from "../constans/action-types";
 
 const initialState = {
     fetchedCategories: [''],
     fetchedProduct: [], 
     fetchedImages: [],
-    selectedProducts: [],
+    selectedProducts: [{id:0}],
 };
 
 export const productReducer = (state=initialState, action: AnyAction) => {
@@ -26,6 +27,16 @@ export const productReducer = (state=initialState, action: AnyAction) => {
             return { ...state,
                 selectedProducts: [...state.selectedProducts, action.payload]
             }
+        case ActionTypes.REMOVE_PRODUCT:    
+        const indexOfObjectToRemove = state.selectedProducts.findIndex(
+            (productAlreadyInState) => productAlreadyInState.id === action.payload.id
+        )   
+        const CopyOfOldSelectedProductsArray = [...state.selectedProducts];
+        CopyOfOldSelectedProductsArray.splice(indexOfObjectToRemove,1);
+        return {
+            ...state,
+            selectedProducts: CopyOfOldSelectedProductsArray 
+        }
         default:
             return state;
     }

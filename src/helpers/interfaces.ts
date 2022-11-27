@@ -53,3 +53,5 @@ export interface CategoryTileProps {
     category: string;
     image: string;
 }
+
+export interface CartProductTileProps extends ProductTileProps {}

@@ -25,7 +25,7 @@ const ProductTile:React.FC<ProductTileProps> = ({product}) => {
                 >{product.category}</Typography>
                 <Typography variant="h3" sx={{fontSize:"2rem"}}
                 >{product.price}$</Typography>
-                <Typography variant="h4" sx={{fontSize:"2rem"}}
+                <Typography variant="h4" sx={{fontSize:"1rem"}}
                 >Rates: {product.rating.rate}</Typography>
             </Card>
             { clicked && 

@@ -59,6 +59,13 @@ export const setProduct = (product:Product) => {
     payload: product
   }
 }
+
+export const removeProduct = (product:Product) => {
+  return {
+    type: ActionTypes.REMOVE_PRODUCT,
+    payload: product
+  }
+}
     
 
 
