@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { AnyAction } from "redux";
-import { InitialState } from "../../helpers/interfaces";
+import { InitialState, Product } from "../../helpers/interfaces";
 import axios from 'axios';
 import { ActionTypes } from "../constans/action-types";
 
@@ -52,6 +52,13 @@ export const fetchProducts = (quantity:number):ThunkAction<void, InitialState, n
     })
   }
 }
+
+export const setProduct = (product:Product) => {
+  return {
+    type: ActionTypes.SET_PRODUCT,
+    payload: product
+  }
+}
     
 
 
@@ -59,3 +66,4 @@ export const fetchProducts = (quantity:number):ThunkAction<void, InitialState, n
 //Kreator akcji asynchronicznych
 //1. funkcja otypowana w odpowiedni sposob jak wyzej
 //2. funkcja zwracajaca inna funkcje asynchroniczna. Ta funkcja asynchroniczna z automatu ma dostep do funkcji dispatch w swoim parametrze. W srodku funkcji asynchronicznej wykonujemy interesujace nas operacje (zazwyczaj jakis fetch) i dispatchujemy pozyskane dane dalej.
+

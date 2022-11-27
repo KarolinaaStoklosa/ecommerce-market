@@ -40,12 +40,14 @@ export interface InitialState {
     fetchedCategories: string[] | [];
     fetchedImages: string[] | [];
     fetchedProducts: Product[] | [];
+    selectedProducts: Product[] | [];
 }
 
 export interface ProductState {
     fetchedCategories: string[] | [];
     fetchedImages: string[] | [];
     fetchedProducts: Product[] | [];
+    selectedProducts: Product[] | [];
 }
 export interface CategoryTileProps {
     category: string;

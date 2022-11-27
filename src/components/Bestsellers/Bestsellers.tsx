@@ -18,10 +18,9 @@ const Bestsellers = () => {
     },[])
 
     const products = useSelector ((state:State) => state.productState.fetchedProducts)
-
     return(
         <Card>
-            {products.length>1 && 
+            {products?.length>1 && 
             products.map((el, i) => {
                 return (
                     <ProductTile product={el} key={i} />

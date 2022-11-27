@@ -2,6 +2,7 @@ import {useState} from 'react'
 import { Product, ProductTileProps } from '../../helpers/interfaces'
 import { useDispatch } from 'react-redux';
 import { Card, Paper, Typography, Box, Button } from '@mui/material';
+import { setProduct } from '../../redux/actions/productActions';
 
 const ProductTile:React.FC<ProductTileProps> = ({product}) => {
 
@@ -32,6 +33,7 @@ const ProductTile:React.FC<ProductTileProps> = ({product}) => {
                     <Typography paragraph sx={{fontSize:"1rem"}}
                     >{product.description}</Typography>
                     <Button variant="contained" sx={{bgcolor:"#FC766AFF"}}
+                    onClick={()=> dispatch(setProduct(product))}
                     >Add to cart</Button>
                 </Card>}
         </>
@@ -59,3 +61,14 @@ export default ProductTile
 // ------w Bestsellers.tsx------
 // 5. Stwórz selektor i ściągnij ze store listę fetchedProducts
 // 6. w returnie wyświetlaj komponentn Card (MUI) w środku renderowanie warunkowe,w zależności czy długość listy ściągniętej w poprzednim punkcie >1; jeśli true na liście z pkt 5 odpal map którym będziesz wyświetlał komponent ProductTile. PAmiętaj o przekazaniu propsa
+
+
+// ----- productReducer.ts -----
+// 1. Stwórz nowy case w productReducer, case ActionTypes.SET_PRODUCT. W środku tak samo jak w poprzednich przypadkach z jedną różnicą. Skopiuj poprzedni stan (...state), selectedProducts ustaw na liste, do środka skopiuj zawartość tej listy i dodaj action.payload.
+// selectedProducts: [...state.selectedProducts, action.payload]
+// ----- productActions.ts -----
+// 2. Stwórz nowy kreator akcji, nazwij go setProduct. Kreator będzie przyjmował 1 parametr, nazwij go product (typ Product, mamy do tego interface). Kreator ma zwracać obiekt akcji, type ustaw na ActionTypes.SET_PRODUCT, payload ustaw na product z parametru kreatora.
+// ----- ProductTile.tsx -----
+// 3. Do przyciksu Add to cart przyczep onClick. W onClicku dispatch setProduct, jako argument do setProduct wrzuć product z propsa komponentu ProductTile.
+// ----- interfaces.ts -----
+// 4. Odpowiednio zaktualizuj interfejsy. Dopisz selectedProducts w InitialState i ProductState.
