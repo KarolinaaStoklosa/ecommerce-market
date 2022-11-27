@@ -8,6 +8,7 @@ import {onAuthStateChanged} from 'firebase/auth';
 import { auth } from './helpers/firebaseConfig';
 import {useDispatch} from 'react-redux';
 import {setAuthState} from './redux/actions/authActions'
+import CartPage from './components/CartPage/CartPage'
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<HomePage/>} />
           <Route path="/register" element={<RegisterPage/>} />
           <Route path="/login" element={<LoginPage/>} />
+          <Route path="/cart" element={<CartPage/>} />
         </Routes>
       </BrowserRouter>
     
