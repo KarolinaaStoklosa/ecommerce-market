@@ -1,8 +1,19 @@
 import React from 'react'
 import {AppBar, Box, Toolbar, Typography, Button} from '@mui/material'
 import {Link} from 'react-router-dom'
+import {State} from '../../helpers/interfaces'
+import { useSelector } from 'react-redux'
+import { signOut } from 'firebase/auth'
+import { auth } from '../../helpers/firebaseConfig'
 
 const Navbar = () => {
+
+    const loggedIn = useSelector( (state: State) => state.authState.authState)
+
+    const logOut = () => {
+        signOut(auth).then(()=>console.log('logged out'))
+    };
+
     return (
         <Box sx={{flexGrow: 1}}>
             <AppBar position='static' sx={{backgroundColor: 'orange'}}>
@@ -52,11 +63,12 @@ const Navbar = () => {
                             </Button>
                     </Link>
                     <Link to='/login' style={{textDecoration:"none", color:"white"}}>
-                            <Button variant='contained' 
-                            sx={{backgroundColor:'#FC766AFF'}}
-                            >
-                                 LOG IN
-                            </Button>
+                                                      
+                            <Button variant='contained' sx={{backgroundColor:'#FC766AFF'}}
+                            onClick={() => { if(loggedIn){signOut(auth).then(()=>console.log('logged out'))}}}
+                            >{ loggedIn? 'LOG OUT' : 'LOG IN'}
+                            </Button> 
+                            
                     </Link>
                 </Toolbar>
             </AppBar>
