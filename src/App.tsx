@@ -9,6 +9,7 @@ import { auth } from './helpers/firebaseConfig';
 import { useDispatch } from 'react-redux';
 import { setAuthState } from './redux/actions/authActions';
 import CartPage from './components/CartPage/CartPage';
+import ProductCategoryPage from './components/ProductCategoryPage/ProductCategoryPage';
 
 function App() {
 	const dispatch = useDispatch();
@@ -29,6 +30,22 @@ function App() {
 					<Route path="/register" element={<RegisterPage />} />
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/cart" element={<CartPage />} />
+					<Route
+						path="/electronics"
+						element={<ProductCategoryPage category="electronics" />}
+					/>
+					<Route
+						path="/jewelery"
+						element={<ProductCategoryPage category="jewelery" />}
+					/>
+					<Route
+						path="/mans"
+						element={<ProductCategoryPage category="men's clothing" />}
+					/>
+					<Route
+						path="/womans"
+						element={<ProductCategoryPage category="women's clothing" />}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</div>
