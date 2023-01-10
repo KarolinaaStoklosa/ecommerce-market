@@ -31,7 +31,7 @@ const CategoryMenu = ({ categories }: { categories: string[] | [] }) => {
 					if (el === `women's clothing`) route = '/womans';
 					return (
 						<Link to={route} key={i}>
-							<CategoryTile category={el} image={images[i]} key={i} />;
+							<CategoryTile category={el} image={images[i]} key={i} />
 						</Link>
 					);
 				})}
