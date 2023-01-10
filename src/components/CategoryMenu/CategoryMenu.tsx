@@ -7,6 +7,7 @@ import { fetchImages } from '../../redux/actions/productActions';
 import CategoryTile from '../CategoryTile/CategoryTile';
 import { useSelector } from 'react-redux';
 import { Paper } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const CategoryMenu = ({ categories }: { categories: string[] | [] }) => {
 	const dispatch = useAppDispatch();
@@ -25,7 +26,14 @@ const CategoryMenu = ({ categories }: { categories: string[] | [] }) => {
 		<Paper elevation={1} sx={{ my: '2rem' }}>
 			{images.length > 0 &&
 				categories.map((el, i) => {
-					return <CategoryTile category={el} image={images[i]} key={i} />;
+					let route: string = el;
+					if (el === `men's clothing`) route = '/mans';
+					if (el === `women's clothing`) route = '/womans';
+					return (
+						<Link to={route} key={i}>
+							<CategoryTile category={el} image={images[i]} key={i} />
+						</Link>
+					);
 				})}
 		</Paper>
 	);
